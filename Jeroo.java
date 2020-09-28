@@ -20,8 +20,44 @@ public class Jeroo extends JerooBase {
      * The Jeroo finishes when it reaches the water at the east
      *    or west end of the island (without picking flowers).
      */
-    public void runCourse() {
-
+    public void runCourse(){
+      while (!isFlower(AHEAD)){
+        hop();
+      }
+      hop();
+      while (isFlower(HERE)){
+        pick();
+        hop();
+      }
+      while (isClear(AHEAD)){
+        hop();
+      }
+      while (isNet(AHEAD)){
+        toss();
+        hop();
+      }
+      while (!isFlower(AHEAD)){
+        hop();
+      }
+      hop();
+      if (isWater(AHEAD)){
+        turn(LEFT);
+        turn(LEFT);
+        hop();
+        turn(RIGHT);
+        while (!isWater(AHEAD)){
+          hop();
+        }
+      }
+      else {
+        turn(LEFT);
+        turn(LEFT);
+        hop();
+        turn(LEFT);
+        while (!isWater(AHEAD)){
+          hop();
+        }
+      }
     }
 
     
